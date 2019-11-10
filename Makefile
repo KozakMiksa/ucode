@@ -1,6 +1,8 @@
 NAME = libmx.a
+
 INC = ./inc/libmx.h
 HEADTMP = ./libmx.h
+
 SRC = ./mx_printchar.c \
 ./mx_print_unicode.c \
 ./mx_printstr.c \
@@ -64,6 +66,7 @@ SRC = ./mx_printchar.c \
 ./mx_isalpha.c \
 ./mx_swap_str.c \
 ./mx_strlen_my.c \
+
 SRCS = ./src/mx_printchar.c \
 ./src/mx_print_unicode.c \
 ./src/mx_printstr.c \
@@ -127,6 +130,7 @@ SRCS = ./src/mx_printchar.c \
 ./src/mx_isalpha.c \
 ./src/mx_swap_str.c \
 ./src/mx_strlen_my.c \
+
 OBJ = ./mx_printchar.o \
 ./mx_print_unicode.o \
 ./mx_printstr.o \
@@ -190,6 +194,7 @@ OBJ = ./mx_printchar.o \
 ./mx_isalpha.o \
 ./mx_swap_str.o \
 ./mx_strlen_my.o
+
 OBJO = ./obj/mx_printchar.o \
 ./obj/mx_print_unicode.o \
 ./obj/mx_printstr.o \
@@ -253,17 +258,23 @@ OBJO = ./obj/mx_printchar.o \
 ./obj/mx_isalpha.o \
 ./obj/mx_swap_str.o \
 ./obj/mx_strlen_my.o \
+
 CFLGS = -std=c11 -Wall -Wextra -Wpedantic -Werror 
+
 all: install uninstall
+
 install:
-    @cp $(INC) $(SRCS) .
-    @clang $(CFLGS) -c  $(SRC)
-    @mkdir  obj
-    @mv $(OBJ) ./obj
-    @ar -rc $(NAME) $(OBJO)
+	@cp $(INC) $(SRCS) .
+	@clang $(CFLGS) -c  $(SRC)
+	@mkdir  obj
+	@mv $(OBJ) ./obj
+	@ar -rc $(NAME) $(OBJO)
+
 uninstall:
-    @rm -rf $(OBJO) $(SRC) $(HEADTMP)
-    @rm -rf ./obj
+	@rm -rf $(OBJO) $(SRC) $(HEADTMP)
+	@rm -rf ./obj
+
 clean: uninstall
-    @rm -rf $(NAME)
+	@rm -rf $(NAME)
+
 reinstall: clean all

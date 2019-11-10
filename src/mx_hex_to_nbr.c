@@ -1,15 +1,6 @@
 #include "libmx.h"
-int mx_strlen(const char *s)
-{
-    int counter = 0;
-    while(*s != '\0')
-    {
-	counter++;
-	s++;
-    }
-    return counter;
-}
-unsigned long mx_pow(double n, int pow)
+
+unsigned long mx_pw(double n, int pow)
 {
     if (pow < 0)
     {
@@ -39,18 +30,18 @@ unsigned long mx_hex_to_nbr(const char *hex)
 	{
 	    if (hex[i] >= 65 && hex[i] <= 70)
 	    {
-		result += (hex[i] - 55) * mx_pow(16, size);
+		result += (hex[i] - 55) * mx_pw(16, size);
 		size--;
 	    }
 	    else
 	    {
-		result += (hex[i] - 87) * mx_pow(16, size);
+		result += (hex[i] - 87) * mx_pw(16, size);
 		size--;
 	    }
 	}
 	else
 	{
-	    result += (hex[i] - 48) * mx_pow(16, size);
+	    result += (hex[i] - 48) * mx_pw(16, size);
 	    size--;
 	}
     }
